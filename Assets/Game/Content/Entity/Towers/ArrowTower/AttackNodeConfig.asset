@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 509201dcf8154d5692034ec15bbd563b, type: 3}
+  m_Name: AttackNodeConfig
+  m_EditorClassIdentifier: TowerDefence::TowerDefence.Core.Utils.BehaviourTree.Configs.NodeConfig
+  _node:
+    rid: 8433943190040477769
+  references:
+    version: 2
+    RefIds:
+    - rid: 7101450070059122791
+      type: {class: SelectTargetNode, ns: TowerDefence.Gameplay.Behaviour.Attack.Nodes, asm: TowerDefence}
+      data:
+        <AbortMode>k__BackingField: 0
+    - rid: 8433943190040477769
+      type: {class: Sequence, ns: TowerDefence.Core.Utils.BehaviourTree.Node.Composite, asm: TowerDefence}
+      data:
+        <AbortMode>k__BackingField: 1
+        _children:
+        - rid: 7101450070059122791
+        - rid: 8433943190040477770
+        - rid: 8433943190040477772
+        - rid: 8433943190040477775
+    - rid: 8433943190040477770
+      type: {class: HasTargetNode, ns: TowerDefence.Gameplay.Behaviour.Attack.Nodes, asm: TowerDefence}
+      data:
+        <AbortMode>k__BackingField: 0
+    - rid: 8433943190040477772
+      type: {class: Parallel, ns: TowerDefence.Core.Utils.BehaviourTree.Node.Composite, asm: TowerDefence}
+      data:
+        <AbortMode>k__BackingField: 1
+        _children:
+        - rid: 8433943190040477773
+        - rid: 8433943190040477774
+        _successPolicy: 1
+        _failPolicy: 0
+    - rid: 8433943190040477773
+      type: {class: WindUpActionNode, ns: TowerDefence.Gameplay.Behaviour.Attack.Nodes, asm: TowerDefence}
+      data:
+        <AbortMode>k__BackingField: 0
+    - rid: 8433943190040477774
+      type: {class: IsLookAtTargetNode, ns: TowerDefence.Gameplay.Behaviour.Attack.Nodes, asm: TowerDefence}
+      data:
+        <AbortMode>k__BackingField: 0
+    - rid: 8433943190040477775
+      type: {class: ExecuteAttackNode, ns: TowerDefence.Gameplay.Behaviour.Attack.Nodes, asm: TowerDefence}
+      data:
+        <AbortMode>k__BackingField: 0

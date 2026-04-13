@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b83565d57c48b698ca97cb1e1b021c, type: 3}
+  m_Name: ArrowTower
+  m_EditorClassIdentifier: TowerDefence::TowerDefence.Gameplay.Entity.Configs.ActorConfig
+  <ActorViewPrefab>k__BackingField: {fileID: 7038178305084399318, guid: 9b6fe44db69619c4a824344cfe1b8af1, type: 3}
+  <ActorBehaviourTreeConfig>k__BackingField: {fileID: 11400000, guid: bc0c55ba638b87447bde01ca3397f6a1, type: 2}
+  <BehavioursConfigs>k__BackingField:
+  - {fileID: 11400000, guid: e9b6f97d0188fc540a47f5189d044ffe, type: 2}
+  - {fileID: 11400000, guid: 13ef4e29eb7c47e40857bd4696b5aa33, type: 2}
+  - {fileID: 11400000, guid: f5eb28913413b0c46a99a48f79e1206a, type: 2}
+  - {fileID: 11400000, guid: 180b5022744d15444ae69120492d0b7a, type: 2}
+  - {fileID: 11400000, guid: 41d04435a81bf9547b4151df218b8b76, type: 2}
+  <AttributesConfigs>k__BackingField: {fileID: 11400000, guid: e5cf81eba1224194ea4c2f2733e60939, type: 2}
+  <ResourceConfigs>k__BackingField: {fileID: 11400000, guid: d7ecefe352faea745a8c3b69ebbb0559, type: 2}
+  <ProjectileConfig>k__BackingField: {fileID: 11400000, guid: 4237579ee58861d44947c11b9bb72558, type: 2}
+  <Traits>k__BackingField: 5
+  <EnemyPriority>k__BackingField: 010000000200000010000000

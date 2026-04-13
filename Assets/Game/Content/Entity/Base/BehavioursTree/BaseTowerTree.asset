@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88fcdfd1160241ba8dd3aeffde1a86f0, type: 3}
+  m_Name: BaseTowerTree
+  m_EditorClassIdentifier: TowerDefence::TowerDefence.Gameplay.Entity.Configs.ActorBehaviourTreeConfig
+  _node:
+    rid: 8433943146886070369
+  references:
+    version: 2
+    RefIds:
+    - rid: 8433943146886070369
+      type: {class: Selector, ns: TowerDefence.Core.Utils.BehaviourTree.Node.Composite, asm: TowerDefence}
+      data:
+        <AbortMode>k__BackingField: 0
+        _children:
+        - rid: 8433943146886070370
+        - rid: 8433943146886070371
+        - rid: 8433943146886070378
+        - rid: 8433943146886070373
+    - rid: 8433943146886070370
+      type: {class: IsDieNode, ns: TowerDefence.Gameplay.Entity.Nodes, asm: TowerDefence}
+      data:
+        <AbortMode>k__BackingField: 0
+    - rid: 8433943146886070371
+      type: {class: HasStunNode, ns: TowerDefence.Gameplay.Entity.Nodes, asm: TowerDefence}
+      data:
+        <AbortMode>k__BackingField: 0
+    - rid: 8433943146886070373
+      type: {class: IdleNode, ns: TowerDefence.Gameplay.Entity.Nodes, asm: TowerDefence}
+      data:
+        <AbortMode>k__BackingField: 0
+    - rid: 8433943146886070378
+      type: {class: AttackNode, ns: TowerDefence.Gameplay.Behaviour.Nodes, asm: TowerDefence}
+      data:
+        <AbortMode>k__BackingField: 1
