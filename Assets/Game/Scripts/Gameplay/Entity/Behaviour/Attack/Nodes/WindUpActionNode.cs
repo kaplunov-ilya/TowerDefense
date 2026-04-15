@@ -40,14 +40,14 @@ namespace TowerDefence.Gameplay.Behaviour.Attack.Nodes
 
             if (Status != NodeStatus.Running)
             {
+                _cooldown.SetCooldown(_attribute.Value);
                 _cooldown.Reset();
                 PlayAnimation();
                 return ReturnStatus(NodeStatus.Running);
             }
 
             UpdateMultiply(multiplier);
-
-            _cooldown.SetCooldown(_attribute.Value);
+            
             var result = _cooldown.Tick(deltaTime, multiplier);
 
             if (result == NodeStatus.Success)

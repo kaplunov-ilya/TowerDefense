@@ -1,6 +1,4 @@
-﻿using TowerDefence.Gameplay.Entity.Projectiles.Contract;
-
-namespace TowerDefence.Gameplay.Services.MoveService.Contract
+﻿namespace TowerDefence.Gameplay.Services.MoveService.Contract
 {
     public interface IMoveService
     {

@@ -13,7 +13,7 @@ namespace TowerDefence.Gameplay.Behaviour.Attack.Nodes
         {
             var target = TypedContext.AttackContext.Target;
             
-            var result = target != null && target.IsAlive ? NodeStatus.Success : NodeStatus.Failure;
+            var result = target != null && target.ActorContext.IsAlive.Value == true ? NodeStatus.Success : NodeStatus.Failure;
 
             if (result == NodeStatus.Failure)
             {

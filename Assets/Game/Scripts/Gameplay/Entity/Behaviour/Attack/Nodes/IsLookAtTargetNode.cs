@@ -17,7 +17,7 @@ namespace TowerDefence.Gameplay.Behaviour.Attack.Nodes
         {
             return ReturnStatus(NodeStatus.Success);
             
-            var target = TypedContext.AttackContext.Target.Owner.View.Transform.position;
+            var target = TypedContext.AttackContext.Target.View.Transform.position;
             var transform = TypedContext.Actor.View.Transform;
             
             Vector3 dir = target - transform.position;

@@ -22,9 +22,11 @@ namespace TowerDefence.Gameplay.Behaviour.Attack.Nodes
         
         public override NodeStatus Tick(float deltaTime, float multiplier)
         {
+            _behaviour.UpdateContext();
+            
             var target = TypedContext.AttackContext.Target;
             
-            if ( target == null || target.IsAlive == false)
+            if ( target == null || target.ActorContext.IsAlive.Value == false)
             {
                 _behaviour.Refresh();
             }

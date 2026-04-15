@@ -1,5 +1,4 @@
 ﻿using System;
-using TowerDefence.Gameplay.Entity.Projectiles.Contract;
 using TowerDefence.Gameplay.Entity.Providers.Contracts;
 using UnityEngine;
 
@@ -16,7 +15,7 @@ namespace TowerDefence.Gameplay.Entity.Providers
         
         public override Type EntityProviderType => typeof(IProjectileSlotProvider);
 
-        public void SetBeginSlotProjectile(IProjectile projectile)
+        /*public void SetBeginSlotProjectile(IProjectile projectile)
         {
             projectile.Transform.SetParent(_parentProjectile);
 
@@ -28,7 +27,7 @@ namespace TowerDefence.Gameplay.Entity.Providers
             projectile.Transform.SetParent(_parentProjectile);
             
             SetPosition(_parentReadyPosition);
-        }
+        }*/
 
         private void SetPosition(Transform statePosition)
         {

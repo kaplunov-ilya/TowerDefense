@@ -6,7 +6,6 @@ using TowerDefence.Gameplay.Utils.BehaviourTree.Node.Contract;
 using TowerDefence.Gameplay.Utils.BehaviourTree.Node.Decorator;
 using TowerDefence.Gameplay.Entity.Domain;
 using TowerDefence.Gameplay.Entity.Providers.Contracts;
-using TowerDefence.Gameplay.Entity.Stats.Contracts;
 using TowerDefence.Gameplay.Entity.Stats.Variants;
 
 namespace TowerDefence.Gameplay.Behaviour.Attack.Nodes
@@ -55,7 +54,7 @@ namespace TowerDefence.Gameplay.Behaviour.Attack.Nodes
         {
             StopAnimation();
             TypedContext.Actor.ActorContext.AttackContext.IsWindUp = false;
-            TypedContext.Actor.ActorContext.AttackContext.Projectile = null;
+            //TypedContext.Actor.ActorContext.AttackContext.Projectile = null;
         }
 
         private void PlayAnimation()

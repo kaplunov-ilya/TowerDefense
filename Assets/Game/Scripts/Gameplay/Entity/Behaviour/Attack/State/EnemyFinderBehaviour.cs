@@ -16,12 +16,12 @@ namespace TowerDefence.Gameplay.Behaviour.Attack.State
     {
         private sealed class Target
         {
-            public ITargetableActorProvider ActorProvider;
+            public Actor TargetActor;
             public int Score;
             
             public void Clear()
             {
-                ActorProvider = null;
+                TargetActor = null;
                 Score = 0;
             }
         }
@@ -73,6 +73,11 @@ namespace TowerDefence.Gameplay.Behaviour.Attack.State
             SelectBestTarget();
         }
 
+        public void UpdateContext()
+        {
+            Owner.ActorContext.AttackContext.Target = _bestTarget.TargetActor;
+        }
+
         private void SubscribeOnChanges()
         {
             _rangeAttribute.ObserveValue.Subscribe(_enemyFinderProvider.SetRadius).AddTo(_disposables);
@@ -110,15 +115,11 @@ namespace TowerDefence.Gameplay.Behaviour.Attack.State
                 return;
             }
             
-            if(_bestTarget.ActorProvider != null && _bestTarget.Score > bestScore)
+            if(_bestTarget.TargetActor != null && _bestTarget.Score > bestScore)
                 return;
             
-            bestTarget.Owner.BehavioursGroup.TryGet<ITargetableBehaviour>(typeof(ITargetableBehaviour), out var target);
-            
             _bestTarget.Score = bestScore;
-            _bestTarget.ActorProvider = bestTarget;
-            
-            Owner.ActorContext.AttackContext.Target = target;
+            _bestTarget.TargetActor = bestTarget.Owner;
         }
         
         private int CalculateScore(EEntityTraits traits)

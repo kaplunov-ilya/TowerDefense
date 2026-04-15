@@ -1,4 +1,5 @@
-﻿using TowerDefence.Gameplay.Utils.BehaviourTree;
+﻿using TowerDefence.Core.Services.MessageBus;
+using TowerDefence.Gameplay.Utils.BehaviourTree;
 using TowerDefence.Core.Utils.Storage;
 using TowerDefence.Gameplay.Behaviour.Contract;
 using TowerDefence.Gameplay.Entity.Configs;
@@ -15,7 +16,8 @@ namespace TowerDefence.Gameplay.Entity
                      GroupStorage<IBehaviour> behaviours, 
                      BehaviourController behaviourController, 
                      ActorView view, 
-                     ActorConfig actorConfig)
+                     ActorConfig actorConfig,
+                     IMessageBus messageBus)
         {
             ProvidersGroup = providers;
             AttributesGroup = attributes;
@@ -24,13 +26,15 @@ namespace TowerDefence.Gameplay.Entity
             BehaviourController = behaviourController;
             View = view;
             ActorConfig = actorConfig;
+            MessageBus = messageBus;
         }
+        
+        public IMessageBus MessageBus { get; }
 
         public ActorView View { get; set; }
         public ActorContext ActorContext { get; } = new();
+        
         public BehaviourController BehaviourController { get; }
-
-        /// <summary> Key - интерфейс поведения, наследник IBehaviour </summary>
         
         public GroupStorage<IEntityProvider> ProvidersGroup { get; }
         public GroupStorage<IResource> ResourcesGroup { get; }
@@ -38,12 +42,6 @@ namespace TowerDefence.Gameplay.Entity
         public GroupStorage<IBehaviour> BehavioursGroup { get; }
         
         public ActorConfig ActorConfig { get; } 
-        
-
-        public void Init()
-        {
-            
-        }
 
         public void SetEnableBehaviours(bool enable)
         {

@@ -1,4 +1,6 @@
 ﻿using System;
+using UnityEngine;
+using UniRx;
 using TowerDefence.Gameplay.Utils.BehaviourTree;
 using TowerDefence.Gameplay.Utils.BehaviourTree.Configs;
 using TowerDefence.Gameplay.Utils.BehaviourTree.Domain;
@@ -6,7 +8,6 @@ using TowerDefence.Gameplay.Utils.BehaviourTree.Node.Contract;
 using TowerDefence.Gameplay.Behaviour.Attack.Contracts;
 using TowerDefence.Gameplay.Behaviour.Contract;
 using TowerDefence.Gameplay.Entity;
-using UnityEngine;
 
 namespace TowerDefence.Gameplay.Behaviour.Attack.State
 {
@@ -14,16 +15,23 @@ namespace TowerDefence.Gameplay.Behaviour.Attack.State
     public sealed class AttackBehaviourNode : BehaviourNode, IAttackBehaviour
     {
         [SerializeField] private BehaviorTreeConfig _behaviourTreeConfig;
-        
+        [SerializeReference, SubclassSelector] private IAttackInitiator _attackInitiator;
+        [SerializeReference, SubclassSelector] private IAttackDelivery _attackDelivery;
+
         public override Type Type => typeof(IAttackBehaviour);
         
         public INode AttackTree { get; set; }
-        
-        public void SetBehaviorTreeConfig(BehaviorTreeConfig config) => _behaviourTreeConfig = config; 
+
+        public ReactiveCommand OnAttack { get; } = new();
+        public IAttackInitiator AttackInitiator => _attackInitiator;
+        public IAttackDelivery AttackDelivery => _attackDelivery;
 
         public override void Init(Actor owner)
         {
             base.Init(owner);
+            
+            AttackInitiator.Init(owner);
+            AttackDelivery.Init(owner);
 
             AttackTree = _behaviourTreeConfig.Create();
         }
@@ -44,7 +52,20 @@ namespace TowerDefence.Gameplay.Behaviour.Attack.State
                 return NodeStatus.Failure;
             
             var status = AttackTree.Tick(deltaTime, multiplier);
+
+            if (status == NodeStatus.Success)
+            {
+                
+            }
+            
             return status;
+        }
+
+        private void ExecuteAttack()
+        {
+            var source = _attackInitiator.GetData();
+            _attackDelivery.Deliver(source);
+            OnAttack.Execute();
         }
 
         public override void Abort()
@@ -60,7 +81,9 @@ namespace TowerDefence.Gameplay.Behaviour.Attack.State
         private AttackBehaviourNode CloneSelf()
         {
             var node = new AttackBehaviourNode();
-            node.SetBehaviorTreeConfig(_behaviourTreeConfig);
+            node._behaviourTreeConfig = _behaviourTreeConfig;
+            _attackInitiator = (IAttackInitiator)_attackInitiator.CloneActivity();
+            _attackDelivery = (IAttackDelivery)_attackDelivery.CloneActivity();
             return node;
         }
     }
