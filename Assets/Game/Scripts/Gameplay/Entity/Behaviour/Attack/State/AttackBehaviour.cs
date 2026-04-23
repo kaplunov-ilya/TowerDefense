@@ -54,9 +54,7 @@ namespace TowerDefence.Gameplay.Behaviour.Attack.State
             var status = AttackTree.Tick(deltaTime, multiplier);
 
             if (status == NodeStatus.Success)
-            {
-                
-            }
+                ExecuteAttack();
             
             return status;
         }

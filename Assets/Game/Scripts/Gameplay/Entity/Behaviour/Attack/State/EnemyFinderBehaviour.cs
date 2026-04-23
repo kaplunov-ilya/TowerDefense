@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using TowerDefence.Gameplay.Behaviour.Attack.Contracts;
 using TowerDefence.Gameplay.Behaviour.Contract;
-using TowerDefence.Gameplay.Behaviour.Defence.Contracts;
 using TowerDefence.Gameplay.Entity;
 using TowerDefence.Gameplay.Entity.Domain;
 using TowerDefence.Gameplay.Entity.Providers.Contracts;

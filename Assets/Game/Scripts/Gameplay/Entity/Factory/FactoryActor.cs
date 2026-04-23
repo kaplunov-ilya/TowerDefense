@@ -15,7 +15,7 @@ namespace TowerDefence.Gameplay.Entity.Factory
     public sealed class FactoryActor
     {
         [Inject] private readonly IObjectResolver _resolver;
-        [Inject] private readonly IMessageBus _messageBus;
+        [Inject] private readonly ActorServiceLocator _locator;
         
         public Actor CreateActor(ActorConfig config)
         {
@@ -33,7 +33,7 @@ namespace TowerDefence.Gameplay.Entity.Factory
 
             var node = config.ActorBehaviourTreeConfig.Create();
             var controller = _resolver.Resolve<BehaviourController>();
-            var actor = new Actor(entityProviderGroup, resourcesGroup, attributesGroup, behavioursGroup, controller, view, config, _messageBus);
+            var actor = new Actor(entityProviderGroup, resourcesGroup, attributesGroup, behavioursGroup, controller, view, config, _locator);
             
             var context = _resolver.Resolve<BehaviourActorContext>();
             context.Actor = actor;

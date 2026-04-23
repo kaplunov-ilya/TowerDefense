@@ -3,6 +3,7 @@ using TowerDefence.Gameplay.Utils.BehaviourTree;
 using TowerDefence.Core.Utils.Storage;
 using TowerDefence.Gameplay.Behaviour.Contract;
 using TowerDefence.Gameplay.Entity.Configs;
+using TowerDefence.Gameplay.Entity.Domain;
 using TowerDefence.Gameplay.Entity.Providers.Contracts;
 using TowerDefence.Gameplay.Entity.Stats.Contracts;
 
@@ -17,7 +18,7 @@ namespace TowerDefence.Gameplay.Entity
                      BehaviourController behaviourController, 
                      ActorView view, 
                      ActorConfig actorConfig,
-                     IMessageBus messageBus)
+                     ActorServiceLocator locator)
         {
             ProvidersGroup = providers;
             AttributesGroup = attributes;
@@ -26,10 +27,10 @@ namespace TowerDefence.Gameplay.Entity
             BehaviourController = behaviourController;
             View = view;
             ActorConfig = actorConfig;
-            MessageBus = messageBus;
+            Locator = locator;
         }
         
-        public IMessageBus MessageBus { get; }
+        public ActorServiceLocator Locator { get; } 
 
         public ActorView View { get; set; }
         public ActorContext ActorContext { get; } = new();

@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using TowerDefence.Core.Services.Pool.Contract;
-using TowerDefence.Gameplay.Entity.Projectiles;
-using TowerDefence.Gameplay.Entity.Projectiles.Configs;
-using TowerDefence.Gameplay.Entity.Projectiles.Contract;
+
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -10,9 +8,9 @@ namespace TowerDefence.Core.Services.Pool
 {
     public sealed class PoolProjectile : IPoolProjectiles
     {
-        private readonly Dictionary<ProjectileConfig, ObjectPool<IProjectile>> _pools = new();
+       // private readonly Dictionary<ProjectileConfig, ObjectPool<IProjectile>> _pools = new();
 
-        public void RegisterProjectile(ProjectileConfig config)
+        /*public void RegisterProjectile(ProjectileConfig config)
         {
             if (_pools.ContainsKey(config))
                 return;
@@ -27,9 +25,9 @@ namespace TowerDefence.Core.Services.Pool
                 );
 
             _pools[config] = pool;
-        }
+        }*/
 
-        public IProjectile Get(ProjectileConfig config)
+        /*public IProjectile Get(ProjectileConfig config)
         {
             if (_pools.TryGetValue(config, out var pool)) 
                 return pool.Get();
@@ -53,6 +51,6 @@ namespace TowerDefence.Core.Services.Pool
         {
             var instance = Object.Instantiate(config.ProjectilePrefab);
             return instance;
-        }
+        }*/
     }
 }
